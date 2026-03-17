@@ -1,0 +1,17 @@
+packages:
+  "framer-motion": "For smooth, professional page transitions and component animations"
+  "clsx": "For conditional class name joining"
+  "tailwind-merge": "For merging tailwind classes safely"
+
+images:
+  - path: "artifacts/web-app/public/images/avatar.png"
+    description: "Minimalist 3D rendered avatar of a professional, clean white background, monochromatic outfit"
+    aspect_ratio: "1:1"
+  - path: "artifacts/web-app/public/images/abstract-bg.png"
+    description: "Ultra minimal professional abstract background, subtle light gray and white gradient mesh, clean corporate aesthetic"
+    aspect_ratio: "16:9"
+
+notes:
+  - Application acts as a clean, minimal professional dashboard overview.
+  - Using framer-motion for subtle entrance animations to achieve a premium feel.
+  - Relying on the healthCheck generated hook from @workspace/api-client-react for real data fetching demonstration.
