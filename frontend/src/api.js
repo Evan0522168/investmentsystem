@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE = 'https://048b8307-e070-4516-80c2-1c01e1463ad6-00-pt07chbqm24b.sisko.replit.dev';
+const BASE = 'https://investment-system-1w3q.onrender.com';
 
 export const getPrice = (stockId) =>
   axios.get(`${BASE}/price/${stockId}`);
