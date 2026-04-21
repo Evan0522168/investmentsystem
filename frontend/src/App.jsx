@@ -40,10 +40,10 @@ export default function App() {
   };
 
   const sc = {
-    checking: { color: '#ffd700', bg: 'rgba(255,215,0,0.1)', border: 'rgba(255,215,0,0.3)', text: '連接中...', icon: '⟳', anim: 'spin 1s linear infinite' },
-    online:   { color: '#00e87a', bg: 'rgba(0,232,122,0.1)', border: 'rgba(0,232,122,0.3)', text: 'API 正常', icon: '●', anim: 'pulse 2s infinite' },
-    slow:     { color: '#ff9f43', bg: 'rgba(255,159,67,0.1)', border: 'rgba(255,159,67,0.3)', text: 'API 較慢', icon: '●', anim: 'pulse 2s infinite' },
-    offline:  { color: '#ff4757', bg: 'rgba(255,71,87,0.1)',  border: 'rgba(255,71,87,0.3)',  text: 'API 離線', icon: '●', anim: 'blink 1s infinite' },
+    checking: { color: '#ffd700', bg: 'rgba(255,215,0,0.1)', border: 'rgba(255,215,0,0.3)', text: 'Connecting...', icon: '⟳', anim: 'spin 1s linear infinite' },
+    online:   { color: '#00e87a', bg: 'rgba(0,232,122,0.1)', border: 'rgba(0,232,122,0.3)', text: 'API Online', icon: '●', anim: 'pulse 2s infinite' },
+    slow:     { color: '#ff9f43', bg: 'rgba(255,159,67,0.1)', border: 'rgba(255,159,67,0.3)', text: 'API Slow', icon: '●', anim: 'pulse 2s infinite' },
+    offline:  { color: '#ff4757', bg: 'rgba(255,71,87,0.1)',  border: 'rgba(255,71,87,0.3)',  text: 'API Offline', icon: '●', anim: 'blink 1s infinite' },
   }[apiStatus];
 
   return (
@@ -54,7 +54,6 @@ export default function App() {
         @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.2; } }
       `}</style>
 
-      {/* Nav */}
       <nav style={{ background: '#0a1628', borderBottom: '1px solid rgba(0,232,122,0.2)', padding: '0 24px', display: 'flex', alignItems: 'center', gap: '16px', height: '56px', position: 'sticky', top: 0, zIndex: 50 }}>
         <div style={{ color: '#00e87a', fontWeight: 700, fontSize: '18px', letterSpacing: '4px' }}>◈ QUANT LAB</div>
 
@@ -66,14 +65,14 @@ export default function App() {
         {apiStatus === STATUS.OFFLINE && (
           <button onClick={checkApiStatus}
             style={{ padding: '4px 12px', background: 'rgba(255,71,87,0.15)', border: '1px solid rgba(255,71,87,0.4)', color: '#ff4757', borderRadius: '4px', cursor: 'pointer', fontSize: '10px', fontFamily: 'monospace' }}>
-            重新連接
+            Reconnect
           </button>
         )}
 
         <div style={{ display: 'flex', gap: '8px', marginLeft: 'auto' }}>
           {[
-            { key: 'strategy', label: '⚡ 策略中心' },
-            { key: 'result',   label: '📊 回測結果', disabled: !backtestResult },
+            { key: 'strategy', label: 'Strategy Center' },
+            { key: 'result', label: 'Backtest Result', disabled: !backtestResult },
           ].map(({ key, label, disabled }) => (
             <button key={key} onClick={() => !disabled && setPage(key)} disabled={disabled}
               style={{ padding: '6px 16px', background: page === key ? 'rgba(0,232,122,0.15)' : 'none', border: `1px solid ${page === key ? 'rgba(0,232,122,0.4)' : 'rgba(255,255,255,0.1)'}`, color: disabled ? 'rgba(255,255,255,0.2)' : page === key ? '#00e87a' : 'rgba(255,255,255,0.5)', borderRadius: '4px', cursor: disabled ? 'not-allowed' : 'pointer', fontSize: '11px', letterSpacing: '1px', fontFamily: 'monospace' }}>
@@ -83,12 +82,11 @@ export default function App() {
         </div>
       </nav>
 
-      {/* Offline Banner */}
       {apiStatus === STATUS.OFFLINE && (
         <div style={{ background: 'rgba(255,71,87,0.1)', borderBottom: '1px solid rgba(255,71,87,0.3)', padding: '10px 24px', display: 'flex', alignItems: 'center', gap: '12px', fontSize: '11px', color: '#ff4757' }}>
           <span>⚠</span>
-          <div>伺服器可能正在啟動，請稍候 30-60 秒後重試。</div>
-          <button onClick={checkApiStatus} style={{ marginLeft: 'auto', padding: '4px 12px', background: 'rgba(255,71,87,0.15)', border: '1px solid rgba(255,71,87,0.4)', color: '#ff4757', borderRadius: '4px', cursor: 'pointer', fontSize: '10px', fontFamily: 'monospace' }}>立即重試</button>
+          <div>Server may be starting up, please wait 30-60 seconds and retry.</div>
+          <button onClick={checkApiStatus} style={{ marginLeft: 'auto', padding: '4px 12px', background: 'rgba(255,71,87,0.15)', border: '1px solid rgba(255,71,87,0.4)', color: '#ff4757', borderRadius: '4px', cursor: 'pointer', fontSize: '10px', fontFamily: 'monospace' }}>Retry</button>
         </div>
       )}
 
