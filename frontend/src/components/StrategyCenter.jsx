@@ -302,7 +302,7 @@ export default function StrategyCenter({ apiStatus, onResult }) {
 
           <div style={{ display: 'flex', gap: '10px' }}>
             <button onClick={handleRun} disabled={loading || apiStatus === 'offline'}
-              style={{ flex: 2, padding: '13px', background: loading ? '#ccc' : C.primary, border: 'none', color: '#fff', borderRadius: '8px', cursor: loading ? 'not-allowed' : 'pointer', fontSize: '14px', fontWeight: 700, letterSpacing: '0.5px', boxShadow: loading ? 'none' : '0 2px 8px rgba(26,58,110,0.3)' }}>
+              style={{ flex: 1, padding: '13px', background: loading ? '#ccc' : C.primary, border: 'none', color: '#fff', borderRadius: '8px', cursor: loading ? 'not-allowed' : 'pointer', fontSize: '14px', fontWeight: 700, letterSpacing: '0.5px', boxShadow: loading ? 'none' : '0 2px 8px rgba(26,58,110,0.3)' }}>
               {loading ? '⟳ Running...' : '▶ Run Backtest'}
             </button>
           </div>
