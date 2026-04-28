@@ -35,28 +35,29 @@ export const saveToSheets = async (result, symbol, strategyName) => {
     year: 'numeric', month: '2-digit', day: '2-digit',
     hour: '2-digit', minute: '2-digit', second: '2-digit'
   });
-  const row = [
+
+  const params = new URLSearchParams({
     time,
     symbol,
-    strategyName,
-    result.total_return,
-    result.sharpe,
-    result.max_drawdown,
-    result.win_rate,
-    result.total_trades,
-    result.initial_cash,
-    result.final_value,
-  ];
+    strategy: strategyName,
+    total_return: result.total_return,
+    sharpe: result.sharpe,
+    max_drawdown: result.max_drawdown,
+    win_rate: result.win_rate,
+    total_trades: result.total_trades,
+    initial_cash: result.initial_cash,
+    final_value: result.final_value,
+  });
+
   try {
-    await fetch(SHEETS_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ row }),
-    });
+    await fetch(
+      `https://script.google.com/macros/s/AKfycbz293vF6iB0xfOGeob1aCZSZRIr5UCtaY7L-dVt5S_47q9Nv9vRie7YClzxJifA6d1D/exec?${params.toString()}`,
+      { method: 'GET', mode: 'no-cors' }
+    );
     return true;
   } catch {
     return false;
   }
 };
+
 
