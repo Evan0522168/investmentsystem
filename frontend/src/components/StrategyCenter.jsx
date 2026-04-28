@@ -305,10 +305,6 @@ export default function StrategyCenter({ apiStatus, onResult }) {
               style={{ flex: 2, padding: '13px', background: loading ? '#ccc' : C.primary, border: 'none', color: '#fff', borderRadius: '8px', cursor: loading ? 'not-allowed' : 'pointer', fontSize: '14px', fontWeight: 700, letterSpacing: '0.5px', boxShadow: loading ? 'none' : '0 2px 8px rgba(26,58,110,0.3)' }}>
               {loading ? '⟳ Running...' : '▶ Run Backtest'}
             </button>
-            <button onClick={handleCompare} disabled={comparing || apiStatus === 'offline'}
-              style={{ flex: 1, padding: '13px', background: comparing ? '#ccc' : C.accent, border: 'none', color: '#fff', borderRadius: '8px', cursor: comparing ? 'not-allowed' : 'pointer', fontSize: '12px', fontWeight: 700, boxShadow: comparing ? 'none' : '0 2px 8px rgba(240,165,0,0.3)' }}>
-              {comparing ? '...' : '⇄ Compare All'}
-            </button>
           </div>
         </div>
       </div>
