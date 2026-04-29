@@ -146,15 +146,16 @@ export default function StrategyCenter({ apiStatus, onResult }) {
     setUpdating(true);
     setUpdateMsg('');
     try {
-      const r = await updatePrice(sym);
-      setUpdateMsg(`Updated to ${r.data.latest_date} (${r.data.total_days} records)`);
+      const r = await updatePrice(sym, startYear);
+      setUpdateMsg(`Updated: ${r.data.earliest_date} → ${r.data.latest_date} (${r.data.total_days} days)`);
     } catch {
       setUpdateMsg('Update failed');
     } finally {
       setUpdating(false);
-      setTimeout(() => setUpdateMsg(''), 4000);
+      setTimeout(() => setUpdateMsg(''), 5000);
     }
   };
+
 
   const buildStrategyConfig = () => {
     if (strategyMode === 'builtin' && selectedStrategy) {
