@@ -131,6 +131,8 @@ export default function StrategyCenter({ apiStatus, onResult }) {
   const [updating, setUpdating] = useState(false);
   const [error, setError] = useState('');
   const [updateMsg, setUpdateMsg] = useState('');
+  const [startYear, setStartYear] = useState(2015);
+
 
   useEffect(() => {
     getStrategies().then(r => setStrategies(r.data.builtin)).catch(() => {});
