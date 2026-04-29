@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const BASE = 'https://investment-system-1w3q.onrender.com';
-const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbz293vF6iB0xfOGeob1aCZSZRIr5UCtaY7L-dVt5S_47q9Nv9vRie7YClzxJifA6d1D/exec';
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyRCLkuuKMy0x_dpR_sf_Rsrp-om3DpPedc7PUgUf3mn5fED8bpA5RAm1X1C1QbhHFn/exec';
 
 const api = axios.create({
   baseURL: BASE,
@@ -51,7 +51,7 @@ export const saveToSheets = async (result, symbol, strategyName) => {
 
   try {
     await fetch(
-      `https://script.google.com/macros/s/AKfycbz293vF6iB0xfOGeob1aCZSZRIr5UCtaY7L-dVt5S_47q9Nv9vRie7YClzxJifA6d1D/exec?${params.toString()}`,
+      `${SHEETS_URL}?${params.toString()}`,
       { method: 'GET', mode: 'no-cors' }
     );
     return true;
@@ -59,5 +59,3 @@ export const saveToSheets = async (result, symbol, strategyName) => {
     return false;
   }
 };
-
-
