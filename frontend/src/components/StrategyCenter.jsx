@@ -518,7 +518,16 @@ export default function StrategyCenter({ apiStatus, onResult }) {
               </div>
             )}
 
-            <div style={{ marginTop: '12px', display: 'flex', gap: '8px', alignItems: 'center' }}>
+                        <div style={{ marginTop: '12px', display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <label style={{ ...S.label, marginBottom: 0 }}>From year:</label>
+                <select value={startYear} onChange={e => setStartYear(parseInt(e.target.value))}
+                  style={{ ...S.select, width: '90px', padding: '6px 8px', fontSize: '12px' }}>
+                  {Array.from({ length: new Date().getFullYear() - 2004 }, (_, i) => 2005 + i).reverse().map(y => (
+                    <option key={y} value={y}>{y}</option>
+                  ))}
+                </select>
+              </div>
               <button onClick={updateData} disabled={updating || !getSymbol()}
                 style={{ padding: '6px 14px', background: '#e8edf7', border: `1px solid ${C.primary}`, color: C.primary, borderRadius: '6px', cursor: 'pointer', fontSize: '11px', fontWeight: 600, opacity: !getSymbol() ? 0.4 : 1 }}>
                 {updating ? 'Updating...' : '⟳ Refresh Data'}
