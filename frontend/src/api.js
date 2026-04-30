@@ -23,7 +23,7 @@ api.interceptors.response.use(
 export const checkHealth = () => api.get('/');
 export const getPrice = (symbol) => api.get(`/price/${symbol}`);
 export const getHistory = (symbol, days = 365) => api.get(`/price/${symbol}/history?days=${days}`);
-export const updatePrice = (symbol, startYear = 2015) =>
+export const updatePrice = (symbol, startYear = 2019) =>
   api.post(`/price/${symbol}/update?start_year=${startYear}`);
 export const getAnalysis = (symbol) => api.get(`/analysis/${symbol}`);
 export const getStrategies = () => api.get('/backtest/strategies');
